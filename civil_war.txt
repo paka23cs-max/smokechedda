@@ -1,0 +1,44 @@
+# ---------- FIRST PLAYBOOK ----------
+
+cd Documents
+
+# Create inventory file
+gedit hosts.ini
+
+# Check hosts
+ansible all -i hosts.ini --list-hosts
+
+# Ping test
+ansible all -i hosts.ini -m ping
+
+# Create playbook
+gedit firstpb.yml
+
+# Run playbook
+ansible-playbook -i hosts.ini firstpb.yml
+
+
+# ---------- CUSTOM MODULE PLAYBOOK ----------
+
+cd Documents
+
+# Create library folder
+mkdir -p library
+
+# Go inside library
+cd library
+
+# Create custom module
+gedit firstmodule.py
+
+# Go back
+cd ..
+
+# Give execute permission
+chmod +x library/firstmodule.py
+
+# Create second playbook
+gedit secondpb.yml
+
+# Run second playbook
+ansible-playbook -i hosts.ini secondpb.yml
