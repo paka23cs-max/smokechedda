@@ -1,0 +1,53 @@
+play1.yml 
+
+- name: My First Playbook
+  hosts: local
+  connection: local
+  tasks:
+    - name: Writing my 1st task
+      debug:
+        msg: "Ansible is Popular"
+       
+hello.py
+#!/usr/bin/python3
+
+from ansible.module_utils.basic import AnsibleModule
+
+def run_module():
+    module_args = dict(
+        name=dict(type='str', required=True)
+    )
+
+    module = AnsibleModule(argument_spec=module_args)
+
+    result = {
+        "changed": False,
+        "msg": f"Hello, {module.params['name']}!"
+    }
+
+    module.exit_json(**result)
+
+if __name__ == '__main__':
+    run_module()
+
+play2.yml
+
+- name: Ansible with 1 module
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Module command
+      hello:
+        name: "CMRIT"
+      register: result
+
+    - name: show msg
+      debug:
+        msg: "{{ result.msg }}"
+
+
+hosts.ini 
+
+[local]
+localhost ansible_connection=local
