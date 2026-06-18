@@ -1,0 +1,23 @@
+mvn archetype:generate \
+-DgroupId=com.mycompany.app \
+-DartifactId=my-app \
+-DarchetypeArtifactId=maven-archetype-quickstart \
+-DarchetypeVersion=1.5 \
+-DinteractiveMode=false
+
+
+
+cd my-app
+
+
+mvn package
+
+4. If build fails
+
+The note says something like:
+
+"Go into pom.xml and make Java version 11"
+
+
+
+java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
