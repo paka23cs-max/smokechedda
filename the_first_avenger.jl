@@ -53,3 +53,6 @@ git push origin main
 
 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+http://localhost:8080
