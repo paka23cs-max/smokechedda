@@ -1,0 +1,24 @@
+mkdir gradlepro
+cd gradlepro
+
+
+gradle init --type java-application
+
+gradle build
+
+gradle run
+
+
+Go to build.gradle and add the following custom task:
+
+task hello {
+    doLast {
+        println "Hello, Gradle!"
+    }
+}
+
+
+gradle build
+
+gradle hello
+

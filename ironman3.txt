@@ -1,0 +1,25 @@
+mvn archetype:generate \
+-DgroupId=com.kendall.app \
+-DartifactId=hailey \
+-DarchetypeArtifactId=maven-archetype-quickstart \
+-DinteractiveMode=false
+
+cd hailey
+
+mvn package
+
+java -cp target/hailey-1.0-SNAPSHOT.jar com.kendall.app.App
+
+gradle init --type pom
+
+gradle build
+
+gradle run
+
+
+So the missing part wasn't Java 11 or JAVA_HOME at all—it was those four specific build.gradle fixes:
+
+apply plugin: 'application'
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+mainClassName = 'com.kendall.app.App'
